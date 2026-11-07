@@ -1,5 +1,3 @@
-import { Navigate, useNavigate } from "react-router-dom";
-
 import { useProductos } from "../hooks/useProducto";
 
 import { useCarritoStore } from "../hooks/useCart";
@@ -24,25 +22,48 @@ export default function Catalogo({ tiendaId }: Props) {
     if (error) return <p>Could not load products: {error}</p>;
 
     return (
-        <section>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 
 
-            <ul>
                 {productos.map((p) => {
                     const enCarrito = cantidadDe(p.id);
                     const restantes = p.disponibilidad - enCarrito;
                     const maxAlcanzado = cantidadDe(p.id) >= p.disponibilidad;
 
                     return (
-                        <li key={p.id}>
-                            {p.nombre} - Q {p.precio} ({restantes} disponibles)
-                            <button onClick={() => agregar(p)} disabled={maxAlcanzado}>
-                                {maxAlcanzado ? "Max reached" : "Add to order"}
-                            </button>
-                        </li>
+                        <div className="col" key={p.id}>
+                            <section className="card h-100 shadow-sm border-0">
+                                <img
+                                    src={p.imagen}
+                                    alt={p.nombre}
+                                    className="card-img-top p-3"
+                                    style={{ height: "180px", objectFit: "contain" }}
+                                />
+
+                                <div className="card-body d-flex flex-column">
+                                    <h5 className="card-title">{p.nombre}</h5>
+
+                                    <p className="card-text text-muted">
+                                        Q {p.precio}
+                                    </p>
+
+                                    <p className="small">
+                                        {restantes} disponibles
+                                    </p>
+
+                                    <button
+                                        className="btn btn-primary mt-auto"
+                                        onClick={() => agregar(p)}
+                                        disabled={maxAlcanzado}
+                                    >
+                                        {maxAlcanzado ? "Max reached" : "Add to order"}
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
                     );
                 })}
-            </ul>
-        </section>
+
+        </div>
     );
 }
