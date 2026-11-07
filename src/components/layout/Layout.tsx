@@ -4,9 +4,9 @@ export default function Layout() {
     return (
         <div>
             <nav>
-                <Link to="/">Dashboard</Link>
-                <Link to="/transactions">Transactions</Link>
-                <Link to="/settings">Settings</Link>
+                <Link to="/">Home</Link>
+                <Link to="/catalog">Catalog</Link>
+               
             </nav>
 
             <main>
