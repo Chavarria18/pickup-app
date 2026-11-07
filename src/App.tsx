@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
-import Catalog from "./pages/Catalog";
+import Cart from "./pages/Cart";
+
 
 export default function App() {
     return (
@@ -9,7 +10,7 @@ export default function App() {
             <Routes>
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
-                  <Route path="/catalog" element={<Catalog />} />
+                   <Route path="/cart" element={<Cart />} />
                 </Route>
             </Routes>
         </BrowserRouter>
