@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup,useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Tienda } from "../../model/Store";
 import { useEffect } from "react";
@@ -28,7 +28,7 @@ function CenterMap({ tiendas }: CenterMapProps) {
 
 
 function StoreMap({ tiendas, onSelectStore }: Props) {
-    const position: [number, number] = [14.6349, -90.5069];   
+    const position: [number, number] = [14.6349, -90.5069];
 
     return (
 
@@ -43,7 +43,7 @@ function StoreMap({ tiendas, onSelectStore }: Props) {
             scrollWheelZoom={false}
         >
 
-            
+
 
             <TileLayer
                 attribution='&copy; OpenStreetMap'
@@ -54,14 +54,25 @@ function StoreMap({ tiendas, onSelectStore }: Props) {
             <CenterMap tiendas={tiendas} />
             {tiendas.map((t) => (
                 <Marker key={t.id} position={[t.lat, t.lng]}>
-                    <Popup>
-                        <strong>{t.nombre}</strong>
-                        <br />
-                        {t.direccion}
-                        <br />
-                        {t.horario}
-                        <br />
-                        <button onClick={() => onSelectStore(t)} >Select store</button>
+                    <Popup minWidth={320} maxWidth={360}>                  
+
+                        <div className="card mb-3" style={{ maxWidth: "540px" }}>
+                            <div className="row g-0">
+                                <div className="col-md-6">
+                                    <img src={t.imagen} alt={t.nombre} style={{ width: "100%", height: "100%" }} />
+
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{t.nombre}</h5>
+                                        <p className="card-text"> {t.direccion}</p>
+                                        <p className="card-text"><small className="text-body-secondary">{t.horario}</small></p>
+                                        <button className="btn btn-info" onClick={() => onSelectStore(t)}  >Seleccionar Tienda</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </Popup>
                 </Marker>
             ))}

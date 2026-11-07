@@ -5,4 +5,5 @@ export interface Tienda {
   horario: string;
   lat: number;
   lng: number;
+  imagen: string;
 }
