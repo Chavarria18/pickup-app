@@ -5,7 +5,7 @@ function Navbar() {
     const totalItems = useCarritoStore(selectCantidadItems);
 
     return (
-        <nav className="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3">
+        <nav className="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 fixed-top">
             <div className="container-fluid justify-content-end">
                 <div className="d-flex align-items-center gap-4">
 

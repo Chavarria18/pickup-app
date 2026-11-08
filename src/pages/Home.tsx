@@ -3,41 +3,47 @@ import { useTiendas } from "../hooks/useTienda";
 import Catalogo from "./Catalog";
 import { useCarritoStore } from "../hooks/useCart";
 import StoreList from "../components/stores/StoreList";
-    function Home() {
-        const { tiendas, cargando, error } = useTiendas();
-        const tienda = useCarritoStore((s) => s.tienda);
-        const seleccionarTienda = useCarritoStore((s) => s.seleccionarTienda);
-        if (cargando) return <p>Loading stores...</p>;
-        if (error) return <p>Could not load stores: {error}</p>;
+import Loader from "../global/Loader";
 
-        return (
-            <div className="container">
-                <br />
-                <div className="row">
-                    <div className="col-md-8">
-                        <StoreMap tiendas={tiendas} onSelectStore={seleccionarTienda} />
-                    </div>
-                    <div className="col-md-4">
-                        <div className="col-lg-8 order-1 order-lg-2">
-                            <StoreList
-                                tiendas={tiendas}
-                                 activaId={tienda?.id ?? null}      
-                                onSelectStore={seleccionarTienda}
-                            />
-                        </div>
+function Home() {
+    const { tiendas, cargando, error } = useTiendas();
+    const tienda = useCarritoStore((s) => s.tienda);
+    const seleccionarTienda = useCarritoStore((s) => s.seleccionarTienda);
+
+
+    if (cargando) return <Loader />;
+    if (error) return <p>No se pudieron cargar las tiendas: {error}</p>;
+
+    return (
+        <div className="container">
+            <br />
+            <div className="row">
+                <div className="col-md-8">
+                    <StoreMap tiendas={tiendas} onSelectStore={seleccionarTienda} />
+                </div>
+                <div className="col-md-4">
+                    <div className="col-lg-8 order-1 order-lg-2">
+                        <StoreList
+                            tiendas={tiendas}
+                            activaId={tienda?.id ?? null}
+                            onSelectStore={seleccionarTienda}
+                        />
                     </div>
                 </div>
-                <br />
-                {tienda && (
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h2>Catalogo - {tienda.nombre}</h2>
-                            <Catalogo tiendaId={tienda.id} />
-                        </div>
-                    </div>
-                )}
             </div>
-        );
-    }
+            <br />
+            {tienda ? (
+                <div className="row">
+                    <div className="col-12">
+                        <h2>Catalogo - {tienda.nombre}</h2>
+                        <Catalogo tiendaId={tienda.id} />
+                    </div>
+                </div>
+            ) : (
+                <p className="text-center text-muted">Seleccione una tienda para ver el catálogo.</p>
+            )}
+        </div>
+    );
+}
 
 export default Home;

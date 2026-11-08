@@ -1,6 +1,7 @@
 import { useProductos } from "../hooks/useProducto";
 
 import { useCarritoStore } from "../hooks/useCart";
+import Loader from "../global/Loader";
 
 interface Props {
     tiendaId: string | undefined;
@@ -17,7 +18,7 @@ export default function Catalogo({ tiendaId }: Props) {
     const cantidadDe = (id: string) =>
         items.find((i) => i.productoId === id)?.cantidad ?? 0;
 
-    if (cargando) return <p>Loading products...</p>;
+    if (cargando) return <Loader/>;
     if (error) return <p>Could not load products: {error}</p>;
 
    
