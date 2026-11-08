@@ -25,8 +25,9 @@ export default function Resumen({ tienda, items, total }: Props) {
 
             </tr>
           </thead>
+          <tbody>
           {items.map((i) => (
-            <tr>
+            <tr key={i.productoId}>
               <td>{i.nombre}</td>
               <td>{i.cantidad}</td>
               <td>{i.precio}</td>
@@ -36,8 +37,10 @@ export default function Resumen({ tienda, items, total }: Props) {
 
 
             </tr>
+          
            
           ))}
+            </tbody>
         </table>
 
         <div className="d-flex justify-content-between fw-bold fs-5">

@@ -11,7 +11,7 @@ export default function Checkout() {
   const tienda = useCarritoStore((s) => s.tienda);
   const items = useCarritoStore((s) => s.items);
   const total = useCarritoStore(selectTotal);
-  const vaciar = useCarritoStore((s) => s.vaciar);
+
 
   const [enviando, setEnviando] = useState(false);
   const [errorApi, setErrorApi] = useState<string | null>(null);
@@ -32,9 +32,9 @@ export default function Checkout() {
       });
       
 
-   
-      navigate("/confirmacion", { state: { orden }, replace: true });
-      vaciar();
+      console.log(orden); 
+      navigate("/confirm", { state: { orden }, replace: true });
+ 
     } catch (e) {
       setErrorApi((e as Error).message); 
       setEnviando(false);
