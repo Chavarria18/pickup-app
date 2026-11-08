@@ -3,12 +3,10 @@ import { useTiendas } from "../hooks/useTienda";
 import Catalogo from "./Catalog";
 import { useCarritoStore } from "../hooks/useCart";
 import StoreList from "../components/stores/StoreList";
-import { useState } from "react";
     function Home() {
         const { tiendas, cargando, error } = useTiendas();
         const tienda = useCarritoStore((s) => s.tienda);
         const seleccionarTienda = useCarritoStore((s) => s.seleccionarTienda);
-        const [activaId, setActivaId] = useState<string | null>(null);
         if (cargando) return <p>Loading stores...</p>;
         if (error) return <p>Could not load stores: {error}</p>;
 

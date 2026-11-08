@@ -1,7 +1,6 @@
 import { useProductos } from "../hooks/useProducto";
 
 import { useCarritoStore } from "../hooks/useCart";
-import Toast from "../components/notification/Toast";
 
 interface Props {
     tiendaId: string | undefined;

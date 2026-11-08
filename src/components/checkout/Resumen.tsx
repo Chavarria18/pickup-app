@@ -1,4 +1,3 @@
-import { tr } from "zod/locales";
 import type { CartModel } from "../../model/CartModel";
 import type { Tienda } from "../../model/Store";
 
