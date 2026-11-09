@@ -1,7 +1,7 @@
 import { useCarritoStore, selectCantidadItems } from "../../store/useCart";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+export default function Navbar() {
     const totalItems = useCarritoStore(selectCantidadItems);
 
     return (
@@ -35,4 +35,3 @@ function Navbar() {
     );
 }
 
-export default Navbar;

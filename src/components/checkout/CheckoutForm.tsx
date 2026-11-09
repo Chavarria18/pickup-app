@@ -55,7 +55,7 @@ export default function CheckoutForm({ onSubmit, enviando }: Props) {
       </div>
 
       <button type="submit" className="btn btn-success w-100" disabled={enviando}>
-        {enviando ? "Placing order..." : "Confirmar"}
+        {enviando ? "Cargando..." : "Confirmar"}
       </button>
     </form>
   );
