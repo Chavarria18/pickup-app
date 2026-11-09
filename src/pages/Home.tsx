@@ -1,7 +1,7 @@
 import StoreMap from "../components/stores/StoreMap";
 import { useTiendas } from "../hooks/useTienda";
-import Catalogo from "./Catalog";
-import { useCarritoStore } from "../hooks/useCart";
+import Catalogo from "../components/stores/Catalog";
+import { useCarritoStore } from "../store/useCart";
 import StoreList from "../components/stores/StoreList";
 import Loader from "../global/Loader";
 
@@ -19,7 +19,7 @@ function Home() {
             <br />
             <div className="row">
                 <div className="col-md-8">
-                    <StoreMap tiendas={tiendas} onSelectStore={seleccionarTienda} />
+                    <StoreMap tiendas={tiendas}  activaId={tienda?.id ?? null} onSelectStore={seleccionarTienda} />
                 </div>
                 <div className="col-md-4">
                     <div className="col-lg-8 order-1 order-lg-2">

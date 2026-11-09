@@ -18,3 +18,5 @@ export const checkoutSchema = z.object({
 });
 
 export type DatosCliente = z.infer<typeof checkoutSchema>;
+
+ 

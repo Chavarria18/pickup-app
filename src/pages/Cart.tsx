@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { useCarritoStore, selectTotal } from "../hooks/useCart"
+import { useCarritoStore, selectTotal } from "../store/useCart"
 import CartItem from "../components/cart/CartItem";
 
 export default function Carrito() {

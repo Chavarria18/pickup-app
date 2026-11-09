@@ -1,7 +1,7 @@
-import { useProductos } from "../hooks/useProducto";
+import { useProductos } from "../../hooks/useProducto";
 
-import { useCarritoStore } from "../hooks/useCart";
-import Loader from "../global/Loader";
+import { useCarritoStore } from "../../store/useCart";
+import Loader from "../../global/Loader";
 
 interface Props {
     tiendaId: string | undefined;
@@ -60,7 +60,7 @@ export default function Catalogo({ tiendaId }: Props) {
                                     onClick={() => agregar(p)}
                                     disabled={maxAlcanzado}
                                 >
-                                    {maxAlcanzado ? "Max reached" : "Add to order"}
+                                    {maxAlcanzado ? "Maximo alcanzado" : "Añadir a orden"}
                                 </button>
                             </div>
                         </section>

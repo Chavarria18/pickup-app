@@ -1,6 +1,6 @@
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import type { OrdenCreada } from "../model/Order";
-import { useCarritoStore } from "../hooks/useCart";
+import { useCarritoStore } from "../store/useCart";
 import { useEffect } from "react";
 export default function Confirm() {
     const { state } = useLocation();

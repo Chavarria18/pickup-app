@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { useCarritoStore, selectTotal } from "../hooks/useCart";
+import { useCarritoStore, selectTotal } from "../store/useCart";
 import CheckoutForm from "../components/checkout/CheckoutForm";
 import Resumen from "../components/checkout/Resumen";
 import type { DatosCliente } from "../schema/checkoutSchema";

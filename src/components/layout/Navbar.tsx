@@ -1,4 +1,4 @@
-import { useCarritoStore, selectCantidadItems } from "../../hooks/useCart";
+import { useCarritoStore, selectCantidadItems } from "../../store/useCart";
 import { Link } from "react-router-dom";
 
 function Navbar() {
