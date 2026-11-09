@@ -13,9 +13,9 @@ VITE_API_URL=https://TU_ID.execute-api.us-east-1.amazonaws.com
 cd pickup-app
 npm install
 
-npm run dev       # http://localhost:5173
-npm run build     # build de producción
-npm run preview   # probar el build
+- npm run dev       # http://localhost:5173
+- npm run build     # build de producción
+- npm run preview   # probar el build
 
 
 
