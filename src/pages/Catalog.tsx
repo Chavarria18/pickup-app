@@ -47,6 +47,9 @@ export default function Catalogo({ tiendaId }: Props) {
                                 <p className="card-text text-muted">
                                     Q {p.precio}
                                 </p>
+                                <p className="small">
+                                    {p.descripcion} 
+                                </p>
 
                                 <p className="small">
                                     {restantes} disponibles

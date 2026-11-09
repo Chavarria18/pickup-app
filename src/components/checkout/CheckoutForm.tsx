@@ -20,7 +20,7 @@ export default function CheckoutForm({ onSubmit, enviando }: Props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="mb-3">
-        <label htmlFor="nombreCliente" className="form-label">Full name *</label>
+        <label htmlFor="nombreCliente" className="form-label">Nombre cliente *</label>
         <input
           id="nombreCliente"
           className={`form-control ${errors.nombreCliente ? "is-invalid" : ""}`}
@@ -31,7 +31,7 @@ export default function CheckoutForm({ onSubmit, enviando }: Props) {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="telefono" className="form-label">Phone *</label>
+        <label htmlFor="telefono" className="form-label">Telefono *</label>
         <input
           id="telefono"
           type="tel"
@@ -43,7 +43,7 @@ export default function CheckoutForm({ onSubmit, enviando }: Props) {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="correo" className="form-label">Email (optional)</label>
+        <label htmlFor="correo" className="form-label">Email (opcional)</label>
         <input
           id="correo"
           type="email"

@@ -1,44 +1,32 @@
-import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useCarritoStore, selectTotal } from "../hooks/useCart";
-import { crearOrden } from "../api/Order";
 import CheckoutForm from "../components/checkout/CheckoutForm";
 import Resumen from "../components/checkout/Resumen";
 import type { DatosCliente } from "../schema/checkoutSchema";
+import useOrden from "../hooks/useOrder";
 
 export default function Checkout() {
   const navigate = useNavigate();
   const tienda = useCarritoStore((s) => s.tienda);
   const items = useCarritoStore((s) => s.items);
   const total = useCarritoStore(selectTotal);
+  const { crear, enviando, error: errorApi } = useOrden();
 
-
-  const [enviando, setEnviando] = useState(false);
-  const [errorApi, setErrorApi] = useState<string | null>(null);
 
 
   if (!tienda || items.length === 0) return <Navigate to="/" replace />;
 
-  const handleSubmit = async (datos: DatosCliente) => {
-    setEnviando(true);
-    setErrorApi(null);
-    try {
-      const orden = await crearOrden({
-        nombreCliente: datos.nombreCliente,
-        telefono: datos.telefono,
-        correo: datos.correo || undefined,
-        tiendaId: tienda.id,
-        items: items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad })),
-      });
-      
 
-      console.log(orden); 
-      navigate("/confirm", { state: { orden }, replace: true });
- 
-    } catch (e) {
-      setErrorApi((e as Error).message); 
-      setEnviando(false);
-    }
+  const handleSubmit = async (datos: DatosCliente) => {
+    const orden = await crear({
+      nombreCliente: datos.nombreCliente,
+      telefono: datos.telefono,
+      correo: datos.correo || undefined,
+      tiendaId: tienda.id,
+      items: items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad })),
+    });
+
+    if (orden) navigate("/confirm", { state: { orden }, replace: true });
   };
 
   return (
@@ -61,7 +49,7 @@ export default function Checkout() {
               {errorApi}
               <div className="mt-2">
                 <button className="btn btn-sm btn-outline-danger" onClick={() => navigate("/")}>
-                 Volver al catalogo
+                  Volver al catalogo
                 </button>
               </div>
             </div>
